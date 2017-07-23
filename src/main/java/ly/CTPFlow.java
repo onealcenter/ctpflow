@@ -110,8 +110,8 @@ public class CTPFlow<K, V> {
 			throw new IllegalArgumentException("transform must not be null.");
 		}
 
-		TopicPartition partition0 = new TopicPartition(consumerTopic, 0);
-		consumer.assign(Collections.singleton(partition0));
+		TopicPartition assignPartition = new TopicPartition(consumerTopic, partition);
+		consumer.assign(Collections.singleton(assignPartition));
 		producer.initTransactions();
 		resetToLastCommittedPositions();
 		while (true) {
